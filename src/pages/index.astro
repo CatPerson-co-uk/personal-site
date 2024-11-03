@@ -1,25 +1,127 @@
 ---
-// WIP.astro
+// src/pages/WIP.astro
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Work in Progress</title>
+    <style>
+      #tsparticles {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
   </head>
-  <body class="bg-[#eff1f5] min-h-screen flex items-center justify-center">
-    <main class="text-center p-8 rounded-lg bg-[#e6e9ef] shadow-lg max-w-2xl mx-4">
-      <div class="space-y-6">  
+  <body class="bg-[#eff1f5] min-h-screen flex items-center justify-center overflow-hidden">
+    <div id="tsparticles"></div>
+    
+    <main class="content text-center p-8 rounded-lg bg-[#e6e9ef]/80 backdrop-blur-sm shadow-lg max-w-2xl mx-4">
+      <div class="space-y-6">
         <h1 class="text-4xl font-bold text-[#4c4f69] mb-4">
           Work in Progress
         </h1>
         
         <p class="text-[#6c6f85] text-lg mb-6">
-          The site is currently being built
+          Im currently building the site
         </p>
       </div>
     </main>
+
+    <script>
+      // Declare the tsParticles type
+      declare const tsParticles: any;
+      
+      // Create a script element for tsParticles
+      const script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js";
+      script.onload = function() {
+        tsParticles.load("tsparticles", {
+          particles: {
+            number: {
+              value: 100,
+              density: {
+                enable: true,
+                value_area: 800
+              }
+            },
+            color: {
+              value: ["#dc8a78", "#7287fd", "#1e66f5", "#8839ef"]
+            },
+            shape: {
+              type: "circle"
+            },
+            opacity: {
+              value: 0.6,
+              random: true,
+              animation: {
+                enable: true,
+                speed: 1,
+                minimumValue: 0.1,
+                sync: false
+              }
+            },
+            size: {
+              value: 3,
+              random: true,
+              animation: {
+                enable: true,
+                speed: 4,
+                minimumValue: 0.3,
+                sync: false
+              }
+            },
+            move: {
+              enable: true,
+              speed: 2,
+              direction: "none",
+              random: true,
+              straight: false,
+              outModes: {
+                default: "bounce"
+              },
+            }
+          },
+          interactivity: {
+            detectsOn: "canvas",
+            events: {
+              onHover: {
+                enable: true,
+                mode: "bubble"
+              },
+              onClick: {
+                enable: true,
+                mode: "push"
+              },
+              resize: true
+            },
+            modes: {
+              bubble: {
+                distance: 200,
+                size: 6,
+                duration: 0.4
+              },
+              push: {
+                quantity: 4
+              }
+            }
+          },
+          background: {
+            color: "#eff1f5"
+          }
+        });
+      };
+      document.head.appendChild(script);
+    </script>
   </body>
 </html>
