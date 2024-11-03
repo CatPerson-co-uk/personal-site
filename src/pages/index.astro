@@ -1,13 +1,13 @@
 ---
-// src/pages/WIP.astro;
+// src/pages/WIP.astro
 ---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Work in Progress</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/2.12.0/tsparticles.bundle.min.js" defer></script>
     <style>
       #tsparticles {
         position: fixed;
@@ -39,80 +39,89 @@
     </main>
 
     <script>
-      tsParticles.load("tsparticles", {
-        particles: {
-          number: {
-            value: 100,
-            density: {
-              enable: true,
-              value_area: 800
-            }
-          },
-          color: {
-            value: ["#dc8a78", "#7287fd", "#1e66f5", "#8839ef"]
-          },
-          shape: {
-            type: "circle"
-          },
-          opacity: {
-            value: 0.6,
-            random: true,
-            animation: {
-              enable: true,
-              speed: 1,
-              minimumValue: 0.1,
-              sync: false
-            }
-          },
-          size: {
-            value: 3,
-            random: true,
-            animation: {
-              enable: true,
-              speed: 4,
-              minimumValue: 0.3,
-              sync: false
-            }
-          },
-          move: {
-            enable: true,
-            speed: 2,
-            direction: "none",
-            random: true,
-            straight: false,
-            outModes: {
-              default: "bounce"
+      // Declare the tsParticles type
+      declare const tsParticles: any;
+      
+      // Create a script element for tsParticles
+      const script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js";
+      script.onload = function() {
+        tsParticles.load("tsparticles", {
+          particles: {
+            number: {
+              value: 100,
+              density: {
+                enable: true,
+                value_area: 800
+              }
             },
+            color: {
+              value: ["#dc8a78", "#7287fd", "#1e66f5", "#8839ef"]
+            },
+            shape: {
+              type: "circle"
+            },
+            opacity: {
+              value: 0.6,
+              random: true,
+              animation: {
+                enable: true,
+                speed: 1,
+                minimumValue: 0.1,
+                sync: false
+              }
+            },
+            size: {
+              value: 3,
+              random: true,
+              animation: {
+                enable: true,
+                speed: 4,
+                minimumValue: 0.3,
+                sync: false
+              }
+            },
+            move: {
+              enable: true,
+              speed: 2,
+              direction: "none",
+              random: true,
+              straight: false,
+              outModes: {
+                default: "bounce"
+              },
+            }
+          },
+          interactivity: {
+            detectsOn: "canvas",
+            events: {
+              onHover: {
+                enable: true,
+                mode: "bubble"
+              },
+              onClick: {
+                enable: true,
+                mode: "push"
+              },
+              resize: true
+            },
+            modes: {
+              bubble: {
+                distance: 200,
+                size: 6,
+                duration: 0.4
+              },
+              push: {
+                quantity: 4
+              }
+            }
+          },
+          background: {
+            color: "#eff1f5"
           }
-        },
-        interactivity: {
-          detectsOn: "canvas",
-          events: {
-            onHover: {
-              enable: true,
-              mode: "bubble"
-            },
-            onClick: {
-              enable: true,
-              mode: "push"
-            },
-            resize: true
-          },
-          modes: {
-            bubble: {
-              distance: 200,
-              size: 6,
-              duration: 0.4
-            },
-            push: {
-              quantity: 4
-            }
-          }
-        },
-        background: {
-          color: "#eff1f5"
-        }
-      });
+        });
+      };
+      document.head.appendChild(script);
     </script>
   </body>
 </html>
